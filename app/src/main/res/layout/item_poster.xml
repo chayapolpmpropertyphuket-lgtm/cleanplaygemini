@@ -16,7 +16,7 @@
         android:text="ชื่อเรื่อง"
         android:textColor="#ffffff"
         android:textSize="13sp"
-        android:textStyle="500"
+        android:textStyle="normal"
         android:maxLines="1"
         android:ellipsize="end"/>
 </LinearLayout>
