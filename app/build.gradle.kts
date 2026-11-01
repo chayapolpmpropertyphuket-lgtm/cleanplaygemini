@@ -50,5 +50,4 @@ dependencies {
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.hierynomus:smbj:0.13.0")
-    implementation("org.json:json:20231027")
 }
