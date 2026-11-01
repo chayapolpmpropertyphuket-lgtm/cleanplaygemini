@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     android:background="#050509">
 
-    <!-- Header / Top Bar แบบมินิมอล -->
+    <!-- Header ด้านบน -->
     <TextView
         android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLEANPLAY"
+        android:text="CLEANPLAY TV"
         android:textColor="#ffffff"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -21,7 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- แถวแสดงรายการมีเดีย (Poster Wall มินิมอล) -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -38,26 +37,76 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ไลบรารีล่าสุด (Jellyfin / Emby / Streams)"
-                android:textColor="#8e8e93"
-                android:textSize="14sp"
+            <!-- Hero Banner ดึงดูดสายตา -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
                 android:layout_marginStart="60dp"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginEnd="60dp"
+                android:background="#16161f"
+                android:padding="40dp">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/posterRecyclerView"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="สตรีมมิ่งระดับพรีเมียม"
+                    android:textColor="#ffffff"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="50dp"/>
+
+                <Button
+                    android:id="@+id/btnDemoPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▶ เล่นทันที"
+                    android:focusable="true"
+                    android:backgroundTint="#ffffff"
+                    android:textColor="#000000"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="30dp"
                 android:paddingStart="60dp"
-                android:paddingEnd="60dp"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                android:paddingEnd="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="รายการมีเดียล่าสุด"
+                        android:textColor="#8e8e93"
+                        android:textSize="14sp"/>
+
+                    <Button
+                        android:id="@+id/btnFiles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:text="📁 เปิดไฟล์แลน (SMB)"
+                        android:textSize="11sp"
+                        android:layout_marginStart="20dp"
+                        android:backgroundTint="#16161f"/>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
