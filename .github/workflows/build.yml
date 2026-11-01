@@ -37,7 +37,7 @@ jobs:
       with:
         tag_name: v1.0.${{ github.run_number }}
         name: "CleanPlay TV v1.0.${{ github.run_number }}"
-        body: "Automatic build and release optimized for Android TV with full player and SMB support."
+        body: "Fully functional Android TV build with Lenna UI, D-pad focus fix, and streaming/W3U/SMB support."
         files: app/build/outputs/apk/debug/app-debug.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
