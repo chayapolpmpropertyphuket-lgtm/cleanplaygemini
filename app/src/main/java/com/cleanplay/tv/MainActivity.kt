@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-data class MediaItem(val title: String, val url: String)
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         Img.init(this)
 
         // ปุ่มเล่นเดโมจาก Hero Banner
-        findViewById<Button>(R.id.btnDemoPlay).setOnClickListener {
+        findViewById<Button>(R.id.btnDemoPlay)?.setOnClickListener {
             val intent = Intent(this, PlayerActivity::class.java).apply {
                 putExtra("video_url", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
             }
@@ -29,38 +27,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         // ปุ่มเปิดหน้าจัดการไฟล์แลน (SMB)
-        findViewById<Button>(R.id.btnFiles).setOnClickListener {
+        findViewById<Button>(R.id.btnFiles)?.setOnClickListener {
             startActivity(Intent(this, SmbBrowserActivity::class.java))
         }
 
-        // รายการมีเดียตัวอย่างที่ไม่ใช่หน้าเปล่า แสดงผลเป็นการ์ดพร้อมคลิกเล่นได้จริง
+        // รายการมีเดียตัวอย่างสไตล์ Lenna
         val sampleList = listOf(
-            MediaItem("Big Buck Bunny (MP4)", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
-            MediaItem("Elephant Dream (HD)", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
-            MediaItem("For Bigger Blazes", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"),
-            MediaItem("Tears of Steel (Sci-Fi)", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4")
+            MediaItemModel("1", "Big Buck Bunny", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
+            MediaItemModel("2", "Elephant Dream", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
+            MediaItemModel("3", "For Bigger Blazes", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"),
+            MediaItemModel("4", "Tears of Steel", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4")
         )
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = MediaAdapter(sampleList) { item ->
-            val intent = Intent(this, PlayerActivity::class.java).apply {
-                putExtra("video_url", item.url)
+        if (recyclerView != null) {
+            recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            recyclerView.adapter = PosterAdapter(sampleList) { item ->
+                val intent = Intent(this, PlayerActivity::class.java).apply {
+                    putExtra("video_url", item.streamUrl)
+                }
+                startActivity(intent)
             }
-            startActivity(intent)
         }
     }
 }
 
-class MediaAdapter(private val items: List<MediaItem>, private val onClick: (MediaItem) -> Unit) :
-    RecyclerView.Adapter<MediaAdapter.ViewHolder>() {
+class PosterAdapter(private val items: List<MediaItemModel>, private val onClick: (MediaItemModel) -> Unit) :
+    RecyclerView.Adapter<PosterAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
+        val tvTitle: TextView = view.findViewById(R.id.tvPosterTitle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_card, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_poster, parent, false)
         return ViewHolder(view)
     }
 
