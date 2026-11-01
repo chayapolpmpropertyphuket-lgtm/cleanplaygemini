@@ -3,7 +3,7 @@ package com.cleanplay.tv
 import okhttp3.Request
 import org.json.JSONObject
 
-data_class MediaItemModel(
+data class MediaItemModel(
     val id: String,
     val title: String,
     val posterUrl: String,
@@ -11,8 +11,6 @@ data_class MediaItemModel(
 )
 
 object MediaService {
-
-    // ตัวอย่างฟังก์ชันดึงข้อมูลจาก Jellyfin / Emby Server
     fun fetchJellyfinLibrary(serverUrl: String, apiKey: String, callback: (List<MediaItemModel>) -> Unit) {
         val url = "$serverUrl/Items?api_key=$apiKey&IncludeItemTypes=Movie,Episode&Recursive=true&Limit=20"
         
@@ -25,7 +23,7 @@ object MediaService {
                     val list = mutableListOf<MediaItemModel>()
 
                     for (i in 0 until items.length()) {
-                        const val item = items.getJSONObject(i)
+                        val item = items.getJSONObject(i)
                         val id = item.optString("Id")
                         val name = item.optString("Name")
                         val poster = "$serverUrl/Items/$id/Images/Primary?api_key=$apiKey"
