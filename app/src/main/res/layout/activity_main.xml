@@ -36,31 +36,11 @@
             android:layout_marginBottom="15dp"/>
 
         <Button
-            android:id="@+id/btnSearch"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:focusable="true"
-            android:text="🔍"
-            android:textSize="18sp"
-            android:backgroundTint="#21262d"
-            android:layout_marginBottom="15dp"/>
-
-        <Button
             android:id="@+id/btnFiles"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:focusable="true"
             android:text="📁"
-            android:textSize="18sp"
-            android:backgroundTint="#21262d"
-            android:layout_marginBottom="15dp"/>
-
-        <Button
-            android:id="@+id/btnSettings"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:focusable="true"
-            android:text="⚙️"
             android:textSize="18sp"
             android:backgroundTint="#21262d"/>
     </LinearLayout>
@@ -81,36 +61,35 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
-            <!-- Hero Banner คอนเทนต์แนะนำด้านบน -->
+            <!-- Hero Banner -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="320dp"
+                android:layout_height="300dp"
                 android:background="#1a2234"
                 android:padding="50dp">
 
                 <TextView
-                    android:id="@+id/heroTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cyberpunk Edge TV"
+                    android:text="ยินดีต้อนรับสู่ CleanPlay TV"
                     android:textColor="#ffffff"
-                    android:textSize="36sp"
+                    android:textSize="32sp"
                     android:textStyle="bold"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="60dp"/>
 
                 <Button
-                    android:id="@+id/btnPlay"
+                    android:id="@+id/btnDemoPlay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="▶ เล่นทันที"
+                    android:text="▶ เล่นไฟล์ทดสอบ (Demo)"
                     android:focusable="true"
                     android:backgroundTint="#ffffff"
                     android:textColor="#000000"
                     android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
-            <!-- แถวคอนเทนต์ -->
+            <!-- รายการคอนเทนต์จริง (RecyclerView) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,51 +99,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="กำลังฮิตบน Android TV"
+                    android:text="รายการมีเดียทั้งหมดในระบบ"
                     android:textColor="#f1f5f9"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="15dp"/>
 
-                <HorizontalScrollView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="none">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:layout_width="220dp"
-                            android:layout_height="120dp"
-                            android:text="คอนเทนต์ 1"
-                            android:focusable="true"
-                            android:backgroundTint="#1e293b"
-                            android:textColor="#ffffff"
-                            android:layout_marginEnd="15dp"/>
-                        <Button
-                            android:layout_width="220dp"
-                            android:layout_height="120dp"
-                            android:text="คอนเทนต์ 2"
-                            android:focusable="true"
-                            android:backgroundTint="#1e293b"
-                            android:textColor="#ffffff"
-                            android:layout_marginEnd="15dp"/>
-                        <Button
-                            android:layout_width="220dp"
-                            android:layout_height="120dp"
-                            android:text="คอนเทนต์ 3"
-                            android:focusable="true"
-                            android:backgroundTint="#1e293b"
-                            android:textColor="#ffffff"
-                            android:layout_marginEnd="15dp"/>
-                    </LinearLayout>
-                </HorizontalScrollView>
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
