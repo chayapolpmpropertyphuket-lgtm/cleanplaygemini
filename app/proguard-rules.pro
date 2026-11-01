@@ -1,3 +1,4 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn com.hierynomus.**
+-dontwarn org.json.**
