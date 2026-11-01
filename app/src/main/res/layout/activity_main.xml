@@ -7,27 +7,71 @@
     android:background="#050509"
     android:focusableInTouchMode="true">
 
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
+    <!-- Top Header & Menu Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="CLEANPLAY TV"
-        android:textColor="#ffffff"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:letterSpacing="0.15"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:paddingTop="35dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CLEANPLAY TV"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.15"/>
+
+        <!-- ปุ่มเมนูหลักทั้งหมด -->
+        <Button
+            android:id="@+id/btnAddUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="➕ เพิ่มลิงก์ / W3U"
+            android:textSize="11sp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#1e293b"
+            android:focusable="true"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/btnServerConfig"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="🖥️ ตั้งค่า Jellyfin/Emby"
+            android:textSize="11sp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#1e293b"
+            android:focusable="true"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/btnFiles"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="📁 เปิดไฟล์แลน (SMB)"
+            android:textSize="11sp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#1e293b"
+            android:focusable="true"/>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appTitle"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toBottomOf="parent"
         android:scrollbars="none">
 
@@ -49,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="สตรีมมิ่งมีเดียและเพลย์ลิสต์อัจฉริยะ"
+                    android:text="ศูนย์รวมความบันเทิงและสตรีมมิ่งอัจฉริยะ"
                     android:textColor="#ffffff"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -62,12 +106,12 @@
                     android:layout_height="wrap_content"
                     android:text="▶ เล่นไฟล์ทดสอบ"
                     android:focusable="true"
-                    android:focusableInTouchMode="true"
                     android:backgroundTint="#ffffff"
                     android:textColor="#000000"
                     android:layout_alignParentBottom="true"/>
             </RelativeLayout>
 
+            <!-- Poster Wall Section -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,31 +120,13 @@
                 android:paddingStart="60dp"
                 android:paddingEnd="60dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="12dp"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="รายการมีเดียและ W3U / M3U"
-                        android:textColor="#8e8e93"
-                        android:textSize="14sp"/>
-
-                    <Button
-                        android:id="@+id/btnFiles"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
-                        android:text="📁 เปิดไฟล์แลน (SMB)"
-                        android:textSize="11sp"
-                        android:layout_marginStart="20dp"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:backgroundTint="#16161f"/>
-                </LinearLayout>
+                    android:text="รายการมีเดียทั้งหมด (W3U, M3U & เซิร์ฟเวอร์)"
+                    android:textColor="#8e8e93"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="12dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
