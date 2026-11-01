@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="220dp"
+    android:layout_height="130dp"
+    android:orientation="vertical"
+    android:background="#1e293b"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_marginEnd="15dp"
+    android:padding="12sp"
+    android:gravity="bottom">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ชื่อไฟล์มีเดีย"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+</LinearLayout>
