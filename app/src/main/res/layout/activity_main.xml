@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#080a0f">
+
+    <!-- Sidebar เมนูด้านข้าง -->
+    <LinearLayout
+        android:id="@+id/sidebar"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:background="#121621"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <View
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/ic_launcher"
+            android:layout_marginBottom="30dp"/>
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:focusable="true"
+            android:text="🏠"
+            android:textSize="18sp"
+            android:backgroundTint="#21262d"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:focusable="true"
+            android:text="🔍"
+            android:textSize="18sp"
+            android:backgroundTint="#21262d"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/btnFiles"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:focusable="true"
+            android:text="📁"
+            android:textSize="18sp"
+            android:backgroundTint="#21262d"
+            android:layout_marginBottom="15dp"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:focusable="true"
+            android:text="⚙️"
+            android:textSize="18sp"
+            android:backgroundTint="#21262d"/>
+    </LinearLayout>
+
+    <!-- Main Content Area -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+            <!-- Hero Banner คอนเทนต์แนะนำด้านบน -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:background="#1a2234"
+                android:padding="50dp">
+
+                <TextView
+                    android:id="@+id/heroTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cyberpunk Edge TV"
+                    android:textColor="#ffffff"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="60dp"/>
+
+                <Button
+                    android:id="@+id/btnPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▶ เล่นทันที"
+                    android:focusable="true"
+                    android:backgroundTint="#ffffff"
+                    android:textColor="#000000"
+                    android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+
+            <!-- แถวคอนเทนต์ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="40dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="กำลังฮิตบน Android TV"
+                    android:textColor="#f1f5f9"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="220dp"
+                            android:layout_height="120dp"
+                            android:text="คอนเทนต์ 1"
+                            android:focusable="true"
+                            android:backgroundTint="#1e293b"
+                            android:textColor="#ffffff"
+                            android:layout_marginEnd="15dp"/>
+                        <Button
+                            android:layout_width="220dp"
+                            android:layout_height="120dp"
+                            android:text="คอนเทนต์ 2"
+                            android:focusable="true"
+                            android:backgroundTint="#1e293b"
+                            android:textColor="#ffffff"
+                            android:layout_marginEnd="15dp"/>
+                        <Button
+                            android:layout_width="220dp"
+                            android:layout_height="120dp"
+                            android:text="คอนเทนต์ 3"
+                            android:focusable="true"
+                            android:backgroundTint="#1e293b"
+                            android:textColor="#ffffff"
+                            android:layout_marginEnd="15dp"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
