@@ -18,25 +18,28 @@ class MainActivity : AppCompatActivity() {
 
         Img.init(this)
 
-        // ปุ่มเล่นเดโมจาก Hero Banner
-        findViewById<Button>(R.id.btnDemoPlay)?.setOnClickListener {
+        // กำหนดโฟกัสเริ่มต้นให้รีโมททีวีสามารถกดใช้งานได้ทันที
+        val btnDemoPlay = findViewById<Button>(R.id.btnDemoPlay)
+        btnDemoPlay?.requestFocus()
+
+        btnDemoPlay?.setOnClickListener {
             val intent = Intent(this, PlayerActivity::class.java).apply {
                 putExtra("video_url", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
             }
             startActivity(intent)
         }
 
-        // ปุ่มเปิดหน้าจัดการไฟล์แลน (SMB)
         findViewById<Button>(R.id.btnFiles)?.setOnClickListener {
             startActivity(Intent(this, SmbBrowserActivity::class.java))
         }
 
-        // รายการมีเดียตัวอย่างสไตล์ Lenna
+        // รายการมีเดียตัวอย่าง (รองรับการขยายผลเชื่อมต่อ W3U / M3U / Jellyfin)
         val sampleList = listOf(
-            MediaItemModel("1", "Big Buck Bunny", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
-            MediaItemModel("2", "Elephant Dream", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
+            MediaItemModel("1", "Big Buck Bunny (MP4)", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"),
+            MediaItemModel("2", "Elephant Dream (HD)", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"),
             MediaItemModel("3", "For Bigger Blazes", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"),
-            MediaItemModel("4", "Tears of Steel", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4")
+            MediaItemModel("4", "Tears of Steel (Sci-Fi)", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"),
+            MediaItemModel("5", "Subaru Outback Sports", "", "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackSeeTheWorld.mp4")
         )
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
